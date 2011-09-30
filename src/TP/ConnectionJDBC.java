@@ -39,7 +39,7 @@ public class ConnectionJDBC
      */
     public boolean isConnected()
     {
-        return isConnected;
+        return this.isConnected;
     }
 
     /**
@@ -93,11 +93,11 @@ public class ConnectionJDBC
         }
     }
 
-    public void closeStatement(Statement stmt)
+    public void closeStatement()
     {
         try
         {
-            stmt.close();
+            this.statement.close();
         } catch (SQLException e)
         {
             e.printStackTrace();
