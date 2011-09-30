@@ -23,7 +23,8 @@ public class ConnexionJDBC {
 	private ResultSet _rs;
 	
 	
-	public ConnexionJDBC() {
+	public ConnexionJDBC() 
+	{
     	 _estConnexionOuverte = Boolean.FALSE;
     	
     	//Connexion
@@ -31,7 +32,8 @@ public class ConnexionJDBC {
 	}	
 
     //Méthodes public
-    public void connecter() {	
+    public void connecter() 
+    {	
 		if(Boolean.FALSE.equals(_estConnexionOuverte)){
 	    	try{
 				//Chargement du Driver
@@ -39,14 +41,21 @@ public class ConnexionJDBC {
 		    
 	    	   	//Création de la connexion
 		    	_connexion = DriverManager.getConnection(CHAINE_CONNEXION, UTILISATEUR_BD, MDP_BD);
+		    	_estConnexionOuverte = Boolean.TRUE;
 	    	}
 	    	catch(Exception e){
 	    		System.err.println(e.getMessage());
+	    		_estConnexionOuverte = Boolean.FALSE;
 	    	}
 	    	
-	    	_estConnexionOuverte = Boolean.TRUE;
+	    	
 		}
 
+    }
+    
+    public boolean isConnexionOuverte()
+    {
+    	return _estConnexionOuverte;
     }
           
 }
